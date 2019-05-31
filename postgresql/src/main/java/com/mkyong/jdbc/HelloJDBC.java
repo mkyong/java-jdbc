@@ -10,60 +10,37 @@ public class HelloJDBC {
 
         try {
 
+            // https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html#package.description
+            // auto java.sql.Driver discovery -- no longer need to load a java.sql.Driver class via Class.forName
+
+            // loads JDBC driver
             Class.forName("org.postgresql.Driver");
 
-        } catch (ClassNotFoundException e) {
-            System.err.println("Unable to find the PostgreSQL JDBC Driver!");
-            e.printStackTrace();
-            return;
-        }
-
-        // default database: postgres
-        // JDK 7, auto close connection with try-with-resources
-        try (Connection conn =
-                     DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/postgres",
-                             "postgres", "password")) {
+            // auto close connection
+            try (Connection conn =
+                         DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/test",
+                                 "postgres", "password")) {
 
 
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("Select * from pg_database");
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery("Select * from \"ORDER\"");
 
-            ResultSetMetaData metaData = resultSet.getMetaData();
-            int columnCount = metaData.getColumnCount();
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                int columnCount = metaData.getColumnCount();
 
-            while (resultSet.next()) {
-                System.out.println("\n----------");
-                for (int i = 1; i <= columnCount; i++) {
-                    String columnName = metaData.getColumnName(i);
-                    System.out.format("%s:%s\n", columnName, resultSet.getString(i));
+                while (resultSet.next()) {
+                    System.out.println("\n----------");
+                    for (int i = 1; i <= columnCount; i++) {
+                        String columnName = metaData.getColumnName(i);
+                        System.out.format("%s:%s\n", columnName, resultSet.getString(i));
+                    }
+
                 }
 
             }
 
 
-
-            /*DatabaseMetaData metaData = connection.getMetaData();
-
-            try (ResultSet rs = metaData.getTables(null, null, "%", null)) {
-
-                ResultSetMetaData rsMeta = rs.getMetaData();
-                int columnCount = rsMeta.getColumnCount();
-
-                while (rs.next()) {
-
-                    System.out.println("\n----------");
-                    System.out.println(rs.getString("TABLE_NAME"));
-                    System.out.println("----------");
-
-                    for (int i = 1; i <= columnCount; i++) {
-                        String columnName = rsMeta.getColumnName(i);
-                        System.out.format("%s:%s\n", columnName, rs.getString(i));
-                    }
-
-                }
-            }*/
-
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.err.println("Something went wrong!");
             e.printStackTrace();
             return;
