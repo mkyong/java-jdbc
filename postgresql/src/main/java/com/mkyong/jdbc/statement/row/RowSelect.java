@@ -1,6 +1,6 @@
 package com.mkyong.jdbc.statement.row;
 
-import com.mkyong.jdbc.Employee;
+import com.mkyong.jdbc.model.Employee;
 
 import java.math.BigDecimal;
 import java.sql.*;

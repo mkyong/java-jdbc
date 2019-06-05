@@ -1,4 +1,4 @@
-package com.mkyong.jdbc;
+package com.mkyong.jdbc.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

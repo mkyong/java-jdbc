@@ -16,6 +16,8 @@ public class RowInsert {
                 "jdbc:postgresql://127.0.0.1:5432/test", "postgres", "password");
              Statement statement = conn.createStatement()) {
 
+            System.out.println(generateInsert("mkyong", new BigDecimal(999.80)));
+
             int row = statement.executeUpdate(generateInsert("mkyong", new BigDecimal(999.80)));
 
             // rows affected
@@ -31,7 +33,8 @@ public class RowInsert {
 
     private static String generateInsert(String name, BigDecimal salary) {
 
-        return "INSERT INTO EMPLOYEE (NAME, SALARY, CREATED_DATE) VALUES ('" + name + "','" + salary + "','" + LocalDateTime.now() + "')";
+        return "INSERT INTO EMPLOYEE (NAME, SALARY, CREATED_DATE) " +
+                "VALUES ('" + name + "','" + salary + "','" + LocalDateTime.now() + "')";
 
     }
 

@@ -15,7 +15,8 @@ public class BatchUpdate {
              PreparedStatement psInsert = conn.prepareStatement(SQL_INSERT);
              PreparedStatement psUpdate = conn.prepareStatement(SQL_UPDATE)) {
 
-            // transaction, commit all or ignore all
+            // optional, for transaction
+            // commit all or rollback all, if any errors
             conn.setAutoCommit(false); // default true
 
             psDDL.execute();

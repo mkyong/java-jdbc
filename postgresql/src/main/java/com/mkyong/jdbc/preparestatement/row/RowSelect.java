@@ -1,10 +1,9 @@
 package com.mkyong.jdbc.preparestatement.row;
 
-import com.mkyong.jdbc.Employee;
+import com.mkyong.jdbc.model.Employee;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.time.LocalDateTime;
 
 public class RowSelect {
 

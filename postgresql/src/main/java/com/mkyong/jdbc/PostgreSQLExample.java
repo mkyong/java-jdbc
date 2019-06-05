@@ -2,7 +2,7 @@ package com.mkyong.jdbc;
 
 import java.sql.*;
 
-public class HelloJDBC {
+public class PostgreSQLExample {
 
     public static void main(String[] args) {
 

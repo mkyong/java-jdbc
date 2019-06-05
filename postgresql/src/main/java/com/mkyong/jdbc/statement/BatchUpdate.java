@@ -16,7 +16,11 @@ public class BatchUpdate {
                 "jdbc:postgresql://127.0.0.1:5432/test", "postgres", "password");
              Statement statement = conn.createStatement()) {
 
-            // add list of SQL commands and run as batch
+            // optional, for transaction
+            // commit all or rollback all, if any errors
+            conn.setAutoCommit(false);
+
+            // add list of SQL commands and run as a batch
 
             // drop table
             statement.addBatch(SQL_DROP);
@@ -36,6 +40,9 @@ public class BatchUpdate {
             int[] rows = statement.executeBatch();
 
             System.out.println(Arrays.toString(rows)); // [0, 0, 1, 1, 1]
+
+            // commit everything
+            conn.commit();
 
             // java 8, not yet implemented by pgStatement 42.2.5
             // statement.executeLargeBatch();
@@ -61,7 +68,8 @@ public class BatchUpdate {
 
     private static String generateInsert(String name, BigDecimal salary) {
 
-        return "INSERT INTO EMPLOYEE (NAME, SALARY, CREATED_DATE) VALUES ('" + name + "','" + salary + "','" + LocalDateTime.now() + "')";
+        return "INSERT INTO EMPLOYEE (NAME, SALARY, CREATED_DATE) " +
+                "VALUES ('" + name + "','" + salary + "','" + LocalDateTime.now() + "')";
 
     }
 

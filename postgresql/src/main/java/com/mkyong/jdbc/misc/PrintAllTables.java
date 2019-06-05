@@ -1,4 +1,4 @@
-package com.mkyong.jdbc;
+package com.mkyong.jdbc.misc;
 
 import java.sql.*;
 

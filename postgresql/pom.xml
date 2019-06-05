@@ -24,6 +24,7 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
