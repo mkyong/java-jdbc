@@ -21,7 +21,7 @@ public class RowInsert {
             int row = preparedStatement.executeUpdate();
 
             // rows affected
-            System.out.println(row);
+            System.out.println(row); // 1
 
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
