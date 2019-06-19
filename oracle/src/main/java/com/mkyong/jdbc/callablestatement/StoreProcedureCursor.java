@@ -17,8 +17,6 @@ import java.sql.*;
       SELECT * FROM EMPLOYEE WHERE NAME LIKE p_name || '%';
 
     END;
-/
-
  */
 public class StoreProcedureCursor {
 
