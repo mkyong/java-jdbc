@@ -8,7 +8,6 @@ public class JDBCExample {
 
     public static void main(String[] args) {
 
-
         // https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html#package.description
         // auto java.sql.Driver discovery -- no longer need to load a java.sql.Driver class via Class.forName
 
