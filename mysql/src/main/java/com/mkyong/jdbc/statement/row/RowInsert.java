@@ -13,7 +13,7 @@ public class RowInsert {
 
         // auto close connection and statement
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/test", "root", "password");
+                "jdbc:mysql://127.0.0.1:3306/mysql", "root", "Gunjan99@");
              Statement statement = conn.createStatement()) {
 
             System.out.println(generateInsert("mkyong", new BigDecimal(999.80)));
