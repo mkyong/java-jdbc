@@ -21,7 +21,7 @@ public class JDBCExample {
 
         // auto close connection
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/test", "root", "password")) {
+                "jdbc:mysql://127.0.0.1:3306/mysql", "root", "Gunjan99@")) {
 
             if (conn != null) {
                 System.out.println("Connected to the database!");
