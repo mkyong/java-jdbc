@@ -13,7 +13,7 @@ public class RowSelect {
 
         try (Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.1:3306/test", "root", "password");
-             Statement statement = conn.createStatement()) {
+            Statement statement = conn.createStatement()) {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
