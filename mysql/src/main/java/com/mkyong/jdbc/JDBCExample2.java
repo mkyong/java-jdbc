@@ -1,11 +1,13 @@
 package com.mkyong.jdbc;
 
-import com.mkyong.jdbc.model.Employee;
+//import com.mkyong.jdbc.model.Employee;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mkyong.jdbc.model.Employee;
 
 public class JDBCExample2 {
 
@@ -15,12 +17,11 @@ public class JDBCExample2 {
 
         List<Employee> result = new ArrayList<>();
 
-        String SQL_SELECT = "Select * from EMPLOYEE";
+        String SQL_SELECT = "Select * from STUDENTS";
 
         // auto close connection and preparedStatement
-        try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/test", "root", "password");
-             PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mysql", "root", "Gunjan99@");
+            PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -28,15 +29,15 @@ public class JDBCExample2 {
 
                 long id = resultSet.getLong("ID");
                 String name = resultSet.getString("NAME");
-                BigDecimal salary = resultSet.getBigDecimal("SALARY");
-                Timestamp createdDate = resultSet.getTimestamp("CREATED_DATE");
+                // BigDecimal salary = resultSet.getBigDecimal("SALARY");
+                // Timestamp createdDate = resultSet.getTimestamp("CREATED_DATE");
 
                 Employee obj = new Employee();
                 obj.setId(id);
                 obj.setName(name);
-                obj.setSalary(salary);
-                // Timestamp -> LocalDateTime
-                obj.setCreatedDate(createdDate.toLocalDateTime());
+                // obj.setSalary(salary);
+                // // Timestamp -> LocalDateTime
+                // obj.setCreatedDate(createdDate.toLocalDateTime());
 
                 result.add(obj);
 
@@ -50,5 +51,4 @@ public class JDBCExample2 {
         }
 
     }
-
 }

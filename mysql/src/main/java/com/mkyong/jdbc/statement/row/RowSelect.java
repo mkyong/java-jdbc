@@ -12,8 +12,8 @@ public class RowSelect {
         String sql = "SELECT * FROM EMPLOYEE";
 
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/test", "root", "password");
-             Statement statement = conn.createStatement()) {
+                "jdbc:mysql://127.0.0.1:3306/mysql", "root", "Gunjan99@");
+            Statement statement = conn.createStatement()) {
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
