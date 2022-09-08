@@ -12,7 +12,7 @@ public class RowSelect {
     public static void main(String[] args) {
 
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/test", "root", "password");
+                "jdbc:mysql://127.0.0.1:3306/mysql", "root", "Gunjan99@");
              PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
